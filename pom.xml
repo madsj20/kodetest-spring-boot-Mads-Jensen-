@@ -11,8 +11,8 @@
 	<groupId>dk.madsjensen</groupId>
 	<artifactId>bank-account-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+	<name>bank-account-api</name>
+	<description>Bank account REST API code challenge</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -27,9 +27,11 @@
 		<url/>
 	</scm>
 	<properties>
+		<!-- Compile against the Java version used by the records and text blocks in the source. -->
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
+		<!-- Runtime application capabilities: persistence, HTTP client, validation and MVC. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-h2console</artifactId>
@@ -56,6 +58,7 @@
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- Test slices and helpers matching the runtime Spring starters above. -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa-test</artifactId>
