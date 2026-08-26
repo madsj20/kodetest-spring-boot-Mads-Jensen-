@@ -96,7 +96,7 @@ public class AccountController {
         );
     }
 
-    // The small DTOs stay here to avoid creating lots of tiny files.
+    // DTOs (Data Transfer Objects) are used to define the JSON structure for requests and responses.
 
     // Request model for the create-account JSON body.
     public record CreateAccountRequest(

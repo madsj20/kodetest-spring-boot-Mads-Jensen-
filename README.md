@@ -14,10 +14,13 @@ No external database or API key is required. Maven is included through the wrapp
 Open PowerShell in the root folder of the project. Run the tests first, then start the application.
 
 ### Test Windows
+
 ```powershell
 .\mvnw.cmd clean test
 ```
+
 ### Run Windows
+
 ```powershell
 .\mvnw.cmd spring-boot:run
 ```
@@ -25,10 +28,13 @@ Open PowerShell in the root folder of the project. Run the tests first, then sta
 On macOS or Linux:
 
 ### Test macOS or Linux
+
 ```bash
 ./mvnw clean test
 ```
+
 ### Run macOS or Linux
+
 ```bash
 ./mvnw spring-boot:run
 ```
@@ -43,14 +49,14 @@ The base API path is `http://localhost:8080/api/v1`. Run the application before 
 
 The examples use PowerShell and the Windows `curl.exe` command. A backtick continues a command on the next line and must be the final character on the line, with no spaces after it. The quotation marks inside each JSON body are escaped as `\"` so they are passed correctly to `curl.exe`. On macOS or Linux, use `curl` instead of `curl.exe`, replace each backtick with `\` and remove the backslashes before the JSON quotation marks.
 
-| Operation | Method | Path |
-|---|---|---|
-| Create account | `POST` | `/api/v1/accounts` |
-| Deposit | `POST` | `/api/v1/accounts/{accountNumber}/deposits` |
-| Balance | `GET` | `/api/v1/accounts/{accountNumber}/balance` |
-| Transfer | `POST` | `/api/v1/transfers` |
-| Current DKK/USD rate | `GET` | `/api/v1/exchange-rates/dkk-usd?amount=100.00` |
-| Historical DKK/USD rates | `GET` | `/api/v1/exchange-rates/dkk-usd/history?amount=100.00` |
+| Operation                | Method | Path                                                   |
+| ------------------------ | ------ | ------------------------------------------------------ |
+| Create account           | `POST` | `/api/v1/accounts`                                     |
+| Deposit                  | `POST` | `/api/v1/accounts/{accountNumber}/deposits`            |
+| Balance                  | `GET`  | `/api/v1/accounts/{accountNumber}/balance`             |
+| Transfer                 | `POST` | `/api/v1/transfers`                                    |
+| Current DKK/USD rate     | `GET`  | `/api/v1/exchange-rates/dkk-usd?amount=100.00`         |
+| Historical DKK/USD rates | `GET`  | `/api/v1/exchange-rates/dkk-usd/history?amount=100.00` |
 
 ### Create an account
 
@@ -64,11 +70,11 @@ The response uses `201 Created`, includes a `Location` header and returns the ge
 
 ```json
 {
-  "accountNumber": "ACC-550E8400E29B",
-  "firstName": "John",
-  "lastName": "Doe",
-  "balance": 0.00,
-  "currency": "DKK"
+    "accountNumber": "ACC-550E8400E29B",
+    "firstName": "John",
+    "lastName": "Doe",
+    "balance": 0.0,
+    "currency": "DKK"
 }
 ```
 
@@ -88,9 +94,9 @@ Example response:
 
 ```json
 {
-  "accountNumber": "ACC-550E8400E29B",
-  "balance": 250.00,
-  "currency": "DKK"
+    "accountNumber": "ACC-550E8400E29B",
+    "balance": 250.0,
+    "currency": "DKK"
 }
 ```
 
@@ -104,9 +110,9 @@ Example response:
 
 ```json
 {
-  "accountNumber": "ACC-550E8400E29B",
-  "balance": 250.00,
-  "currency": "DKK"
+    "accountNumber": "ACC-550E8400E29B",
+    "balance": 250.0,
+    "currency": "DKK"
 }
 ```
 
@@ -124,12 +130,12 @@ Example response:
 
 ```json
 {
-  "fromAccountNumber": "ACC-550E8400E29B",
-  "toAccountNumber": "ACC-6BA7B8109DAD",
-  "fromBalance": 174.75,
-  "toBalance": 75.25,
-  "transferredAmount": 75.25,
-  "currency": "DKK"
+    "fromAccountNumber": "ACC-550E8400E29B",
+    "toAccountNumber": "ACC-6BA7B8109DAD",
+    "fromBalance": 174.75,
+    "toBalance": 75.25,
+    "transferredAmount": 75.25,
+    "currency": "DKK"
 }
 ```
 
@@ -149,13 +155,13 @@ Example response values are illustrative because the rate changes over time:
 
 ```json
 {
-  "baseCurrency": "DKK",
-  "quoteCurrency": "USD",
-  "baseAmount": 100.00,
-  "rate": 0.14325,
-  "convertedAmount": 14.32,
-  "rateDate": "2026-08-24",
-  "provider": "Frankfurter"
+    "baseCurrency": "DKK",
+    "quoteCurrency": "USD",
+    "baseAmount": 100.0,
+    "rate": 0.14325,
+    "convertedAmount": 14.32,
+    "rateDate": "2026-08-24",
+    "provider": "Frankfurter"
 }
 ```
 
@@ -179,26 +185,26 @@ The response structure is:
 
 ```json
 {
-  "baseCurrency": "DKK",
-  "quoteCurrency": "USD",
-  "baseAmount": 100.00,
-  "provider": "Frankfurter",
-  "rates": [
-    {
-      "year": 2005,
-      "rateDate": "2005-01-01",
-      "rate": 0.17650,
-      "convertedAmount": 17.65,
-      "current": false
-    },
-    {
-      "year": 2026,
-      "rateDate": "2026-08-24",
-      "rate": 0.14325,
-      "convertedAmount": 14.32,
-      "current": true
-    }
-  ]
+    "baseCurrency": "DKK",
+    "quoteCurrency": "USD",
+    "baseAmount": 100.0,
+    "provider": "Frankfurter",
+    "rates": [
+        {
+            "year": 2005,
+            "rateDate": "2005-01-01",
+            "rate": 0.1765,
+            "convertedAmount": 17.65,
+            "current": false
+        },
+        {
+            "year": 2026,
+            "rateDate": "2026-08-24",
+            "rate": 0.14325,
+            "convertedAmount": 14.32,
+            "current": true
+        }
+    ]
 }
 ```
 
@@ -212,22 +218,22 @@ The response structure is:
 
 Expected failures use standard HTTP statuses:
 
-| Status | Meaning |
-|---|---|
-| `400 Bad Request` | Invalid amount, currency or request data |
-| `404 Not Found` | Account number does not exist |
-| `409 Conflict` | Insufficient funds, self-transfer or concurrent account update |
-| `502 Bad Gateway` | The exchange-rate provider failed or returned invalid data |
+| Status            | Meaning                                                        |
+| ----------------- | -------------------------------------------------------------- |
+| `400 Bad Request` | Invalid amount, currency or request data                       |
+| `404 Not Found`   | Account number does not exist                                  |
+| `409 Conflict`    | Insufficient funds, self-transfer or concurrent account update |
+| `502 Bad Gateway` | The exchange-rate provider failed or returned invalid data     |
 
 Errors use Spring's Problem Details JSON format. Example:
 
 ```json
 {
-  "type": "about:blank",
-  "title": "Conflict",
-  "status": 409,
-  "detail": "Insufficient funds",
-  "instance": "/api/v1/transfers"
+    "type": "about:blank",
+    "title": "Conflict",
+    "status": 409,
+    "detail": "Insufficient funds",
+    "instance": "/api/v1/transfers"
 }
 ```
 
@@ -240,7 +246,6 @@ Errors use Spring's Problem Details JSON format. Example:
 - Constructor injection makes component dependencies explicit and testable.
 - `FrankfurterClient` isolates the third-party provider from the API and conversion logic.
 - H2 keeps the project self-contained; data is reset when the application restarts.
-- Request and response records are kept inside the controllers to avoid a large number of tiny files.
 - Business failures use ordinary HTTP statuses: `400`, `404` and `409`.
 - Exchange-rate calculations use `RoundingMode.HALF_EVEN`.
 
